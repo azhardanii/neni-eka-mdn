@@ -1,0 +1,1 @@
+﻿data:image' | Select-Object -First 1 | ForEach-Object { $_.Line.Substring(0, [math]::Min($_.Line.Length, 200)) }
