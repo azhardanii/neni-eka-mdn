@@ -8,11 +8,26 @@
     <meta name="description"
         content="Neni Eka Mdn — Content Writer, Storyteller &amp; Voice Over Talent. Bangun personal branding autentik lewat kata dan suara.">
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Preconnect for faster DNS resolution -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://www.instagram.com">
+
+    <!-- Non-blocking font loading -->
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/more-sugar" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet"></noscript>
+    <link href="https://fonts.cdnfonts.com/css/more-sugar" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.cdnfonts.com/css/more-sugar" rel="stylesheet"></noscript>
+
+    <!-- Non-blocking Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+
+    <!-- Instagram embed - async so it doesn't block render -->
+    <script async src="https://www.instagram.com/embed.js"></script>
 
     <script>
         tailwind.config = {
@@ -573,9 +588,14 @@
         }
 
         .scroll-section {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s ease-out;
+        }
+
+        .scroll-section.animate-hidden {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s ease-out;
         }
 
         .scroll-section.visible {
@@ -1226,14 +1246,16 @@
 
         .ig-scroller-wrapper {
             width: 100%;
-            overflow: hidden;
+            overflow-x: auto;
+            overflow-y: hidden;
             position: relative;
+            -webkit-overflow-scrolling: touch;
         }
 
         .ig-grid {
             display: flex;
             gap: 16px;
-            padding: 10px 0;
+            padding: 10px 16px;
             width: max-content;
         }
 
@@ -1395,7 +1417,7 @@
                                 </div>
                             </div>
                             <div class="w-1/2 h-full relative overflow-hidden bg-cream">
-                                <img data-img="portrait" class="w-full h-full object-cover reveal-img"
+                                <img data-img="portrait" class="w-full h-full object-cover reveal-img" loading="lazy"
                                     style="object-position: 50% 25%;" alt="Neni Eka Mdn.">
                             </div>
                         </div>
@@ -1547,7 +1569,7 @@
                 class="max-w-xl mx-auto flex flex-col md:flex-row gap-8 md:gap-12 items-start scroll-section delay-100">
                 <div class="w-full md:w-[40%] flex-shrink-0">
                     <div class="portrait-frame relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/5]">
-                        <img data-img="portrait" class="w-full h-full object-cover object-top"
+                        <img data-img="portrait" class="w-full h-full object-cover object-top" loading="lazy"
                             alt="Neni Eka Mdn. portrait">
                     </div>
                     <p class="font-accent mt-4 text-center sticker text-lg" style="color: var(--burgundy);">&ldquo;Aku
@@ -1786,214 +1808,129 @@
             style="background: var(--white); border-top: 1px solid rgba(201,168,76,0.1);">
             <div class="px-5 md:px-12 mb-6 scroll-section">
                 <div class="section-label burgundy-label">Portfolio</div>
-                <h2 class="text-2xl md:text-5xl font-headline font-bold mt-1 text-ink">Di Balik Layar.</h2>
+                <h2 class="text-2xl md:text-5xl font-headline font-bold mt-1 text-ink">Neni in <em>Action</em>.</h2>
                 <p class="text-[9px] md:text-xs mt-2 tracking-widest uppercase" style="color: rgba(36,26,18,0.4);">
                     Menulis • Bersuara • Berbagi Cerita</p>
             </div>
-            <div id="portfolio-scroller"
-                class="flex overflow-x-auto overflow-y-hidden gap-4 px-4 pb-4 no-scrollbar items-end"
-                style="scroll-behavior: auto;">
-                <div
-                    class="flex-shrink-0 w-32 h-44 md:w-72 md:h-96 relative bg-cream group overflow-hidden rounded-sm cursor-pointer">
-                    <img data-img="formal"
-                        class="w-full h-full object-cover transition-transform duration-500 ease-out group-active:scale-110"
-                        alt="Offline event">
-                    <div
-                        class="absolute bottom-0 left-0 p-2 bg-gradient-to-t from-[var(--burgundy-dark)]/90 to-transparent w-full pointer-events-none">
-                        <p class="text-[8px] font-bold text-white uppercase">Offline Event</p>
-                    </div>
-                </div>
-                <div
-                    class="flex-shrink-0 w-32 h-44 md:w-72 md:h-96 relative bg-cream group overflow-hidden rounded-sm cursor-pointer">
-                    <img data-img="vobooth"
-                        class="w-full h-full object-cover transition-transform duration-500 ease-out group-active:scale-110"
-                        alt="Voice over session">
-                    <div
-                        class="absolute bottom-0 left-0 p-2 bg-gradient-to-t from-[var(--burgundy-dark)]/90 to-transparent w-full pointer-events-none">
-                        <p class="text-[8px] font-bold text-white uppercase">Voice Over Session</p>
-                    </div>
-                </div>
-                <div
-                    class="flex-shrink-0 w-32 h-44 md:w-72 md:h-96 relative bg-cream group overflow-hidden rounded-sm cursor-pointer">
-                    <img data-img="award"
-                        class="w-full h-full object-cover transition-transform duration-500 ease-out group-active:scale-110"
-                        alt="Public speaking event">
-                    <div
-                        class="absolute bottom-0 left-0 p-2 bg-gradient-to-t from-[var(--burgundy-dark)]/90 to-transparent w-full pointer-events-none">
-                        <p class="text-[8px] font-bold text-white uppercase">Public Speaking Event</p>
-                    </div>
-                </div>
-                <div
-                    class="flex-shrink-0 w-32 h-44 md:w-72 md:h-96 relative bg-cream group overflow-hidden rounded-sm cursor-pointer">
-                    <img data-img="sharing1"
-                        class="w-full h-full object-cover transition-transform duration-500 ease-out group-active:scale-110"
-                        alt="Sharing session">
-                    <div
-                        class="absolute bottom-0 left-0 p-2 bg-gradient-to-t from-[var(--burgundy-dark)]/90 to-transparent w-full pointer-events-none">
-                        <p class="text-[8px] font-bold text-white uppercase">Sharing Session</p>
-                    </div>
-                </div>
-                <div
-                    class="flex-shrink-0 w-32 h-44 md:w-72 md:h-96 relative bg-cream group overflow-hidden rounded-sm cursor-pointer">
-                    <img data-img="sharing2"
-                        class="w-full h-full object-cover transition-transform duration-500 ease-out group-active:scale-110"
-                        alt="Personal branding talk">
-                    <div
-                        class="absolute bottom-0 left-0 p-2 bg-gradient-to-t from-[var(--burgundy-dark)]/90 to-transparent w-full pointer-events-none">
-                        <p class="text-[8px] font-bold text-white uppercase">Branding Talk</p>
-                    </div>
-                </div>
-                <div
-                    class="flex-shrink-0 w-32 h-44 md:w-72 md:h-96 relative bg-cream group overflow-hidden rounded-sm cursor-pointer">
-                    <img data-img="sharing3"
-                        class="w-full h-full object-cover transition-transform duration-500 ease-out group-active:scale-110"
-                        alt="Workshop moment">
-                    <div
-                        class="absolute bottom-0 left-0 p-2 bg-gradient-to-t from-[var(--burgundy-dark)]/90 to-transparent w-full pointer-events-none">
-                        <p class="text-[8px] font-bold text-white uppercase">Workshop Moment</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex flex-col items-center justify-center mt-8 px-5 scroll-section">
-                <p class="text-sm md:text-base text-ink/60 mb-4 text-center max-w-sm">Masih banyak cerita, dokumentasi,
-                    dan sertifikat lain di balik layar Neni.</p>
-                <a href="javascript:void(0)" onclick="openPortfolioModal()"
-                    class="btn-cream-pulse w-fit mx-auto px-6 py-3 rounded-full font-bold text-[11px] md:text-xs tracking-[0.15em] uppercase shadow-lg active:scale-95 flex justify-center items-center transition-all duration-300">
-                    Lihat Portfolio Lengkap →
-                </a>
-            </div>
-        </section>
-
-        <!-- ===================== INSTAGRAM SECTION ===================== -->
-        <section id="instagram" class="py-16 md:py-24 relative z-20"
-            style="background: var(--cream); border-top: 1px solid rgba(201,168,76,0.1);">
-            <div class="px-5 md:px-12 mb-10 scroll-section">
-                <div class="ig-header reveal">
-                    <div class="ig-profile-row">
-                        <div class="ig-avatar">
-                            <img src="ig_pict.png" alt="Neni Eka Mdn"
-                                style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid var(--cream);">
-                        </div>
-                        <div class="text-left">
-                            <div class="ig-handle">@neniekamdn</div>
-                            <div class="ig-followers">Neni Eka Mdn. | Storyteller</div>
-                        </div>
-                    </div>
-                    <div>
-                        <h2 class="section-title text-2xl md:text-4xl font-headline font-bold mt-1 text-ink">Konten
-                            Terbaru Neni.</h2>
-                    </div>
-                    <a href="https://www.instagram.com/neniekamdn/" target="_blank" class="ig-follow-btn mt-4">Follow di
-                        Instagram ↗</a>
-                </div>
-            </div>
-
-            <div class="ig-scroller-wrapper scroll-section">
-                <div class="ig-grid pt-2 pb-5" id="ig-scroller-grid">
+            <div class="ig-scroller-wrapper">
+                <div class="ig-grid pt-2 pb-5" id="portfolio-ig-grid">
                     <!-- Post 1 -->
-                    <div class="ig-post reveal">
+                    <div class="ig-post">
                         <blockquote class="instagram-media"
                             data-instgrm-permalink="https://www.instagram.com/p/Da7V7PkxLZe/" data-instgrm-version="14"
                             style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%;">
                             <div style="padding:16px;"> <a href="https://www.instagram.com/p/Da7V7PkxLZe/"
-                                    target="_blank">View this post on Instagram</a> </div>
+                                    target="_blank"> </a> </div>
                         </blockquote>
                     </div>
                     <!-- Post 2 -->
-                    <div class="ig-post reveal reveal-delay-1">
+                    <div class="ig-post">
                         <blockquote class="instagram-media"
                             data-instgrm-permalink="https://www.instagram.com/p/DPLlgLDkYjf/" data-instgrm-version="14"
                             style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%;">
                             <div style="padding:16px;"> <a href="https://www.instagram.com/p/DPLlgLDkYjf/"
-                                    target="_blank">View this post on Instagram</a> </div>
+                                    target="_blank"> </a> </div>
                         </blockquote>
                     </div>
                     <!-- Post 3 -->
-                    <div class="ig-post reveal reveal-delay-2">
+                    <div class="ig-post">
                         <blockquote class="instagram-media"
                             data-instgrm-permalink="https://www.instagram.com/p/DYYmca5kV-E/" data-instgrm-version="14"
                             style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%;">
                             <div style="padding:16px;"> <a href="https://www.instagram.com/p/DYYmca5kV-E/"
-                                    target="_blank">View this post on Instagram</a> </div>
+                                    target="_blank"> </a> </div>
                         </blockquote>
                     </div>
                     <!-- Post 4 -->
-                    <div class="ig-post reveal">
+                    <div class="ig-post">
                         <blockquote class="instagram-media"
                             data-instgrm-permalink="https://www.instagram.com/p/DX4irdqxunk/" data-instgrm-version="14"
                             style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%;">
                             <div style="padding:16px;"> <a href="https://www.instagram.com/p/DX4irdqxunk/"
-                                    target="_blank">View this post on Instagram</a> </div>
+                                    target="_blank"> </a> </div>
                         </blockquote>
                     </div>
                     <!-- Post 5 -->
-                    <div class="ig-post reveal reveal-delay-1">
+                    <div class="ig-post">
                         <blockquote class="instagram-media"
                             data-instgrm-permalink="https://www.instagram.com/p/DYmaGhEReD_/" data-instgrm-version="14"
                             style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%;">
                             <div style="padding:16px;"> <a href="https://www.instagram.com/p/DYmaGhEReD_/"
-                                    target="_blank">View this post on Instagram</a> </div>
+                                    target="_blank"> </a> </div>
                         </blockquote>
                     </div>
                     <!-- Post 6 -->
-                    <div class="ig-post reveal reveal-delay-2">
+                    <div class="ig-post">
                         <blockquote class="instagram-media"
                             data-instgrm-permalink="https://www.instagram.com/p/DXykctrvBTs/" data-instgrm-version="14"
                             style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%;">
                             <div style="padding:16px;"> <a href="https://www.instagram.com/p/DXykctrvBTs/"
-                                    target="_blank">View this post on Instagram</a> </div>
+                                    target="_blank"> </a> </div>
                         </blockquote>
                     </div>
                     <!-- Post 7 -->
-                    <div class="ig-post reveal">
+                    <div class="ig-post">
                         <blockquote class="instagram-media"
                             data-instgrm-permalink="https://www.instagram.com/p/DXgjw35kerL/" data-instgrm-version="14"
                             style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%;">
                             <div style="padding:16px;"> <a href="https://www.instagram.com/p/DXgjw35kerL/"
-                                    target="_blank">View this post on Instagram</a> </div>
+                                    target="_blank"> </a> </div>
                         </blockquote>
                     </div>
                     <!-- Post 8 -->
-                    <div class="ig-post reveal reveal-delay-1">
+                    <div class="ig-post">
                         <blockquote class="instagram-media"
                             data-instgrm-permalink="https://www.instagram.com/p/DWGeYaIDdI-/" data-instgrm-version="14"
                             style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%;">
                             <div style="padding:16px;"> <a href="https://www.instagram.com/p/DWGeYaIDdI-/"
-                                    target="_blank">View this post on Instagram</a> </div>
+                                    target="_blank"> </a> </div>
                         </blockquote>
                     </div>
                     <!-- Post 9 -->
-                    <div class="ig-post reveal reveal-delay-2">
+                    <div class="ig-post">
                         <blockquote class="instagram-media"
                             data-instgrm-permalink="https://www.instagram.com/p/DULNaUsEUHX/" data-instgrm-version="14"
                             style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%;">
                             <div style="padding:16px;"> <a href="https://www.instagram.com/p/DULNaUsEUHX/"
-                                    target="_blank">View this post on Instagram</a> </div>
+                                    target="_blank"> </a> </div>
                         </blockquote>
                     </div>
                     <!-- Post 10 -->
-                    <div class="ig-post reveal">
+                    <div class="ig-post">
                         <blockquote class="instagram-media"
                             data-instgrm-permalink="https://www.instagram.com/p/DPGhsaZERJf/" data-instgrm-version="14"
                             style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%;">
                             <div style="padding:16px;"> <a href="https://www.instagram.com/p/DPGhsaZERJf/"
-                                    target="_blank">View this post on Instagram</a> </div>
+                                    target="_blank"> </a> </div>
                         </blockquote>
                     </div>
                 </div>
             </div>
 
-            <div class="flex flex-col items-center justify-center mt-8 px-5 scroll-section">
-                <a href="https://www.instagram.com/neniekamdn/" target="_blank"
-                    style="background-color: var(--burgundy-dark); color: var(--cream);"
-                    class="w-fit mx-auto px-6 py-3 rounded-full font-bold text-[11px] md:text-xs tracking-[0.15em] uppercase shadow-lg active:scale-95 flex justify-center items-center transition-all duration-300">
-                    Lihat Semua Konten Neni →
-                </a>
+            <!-- Scroll hint -->
+            <div class="flex items-center justify-center gap-2 mt-3 mb-1 px-5">
+                <i class="fas fa-hand-pointer text-burgundy/40 text-sm"></i>
+                <p class="text-[9px] uppercase tracking-widest" style="color: rgba(109,0,17,0.4);">Bisa di geser</p>
+                <i class="fas fa-arrow-right text-burgundy/40 text-sm"></i>
             </div>
 
-            <script async src="https://www.instagram.com/embed.js"></script>
+            <div class="flex flex-col items-center justify-center gap-3 mt-8 px-5 scroll-section">
+                <p class="text-sm md:text-base text-ink/60 mb-2 sm:mb-0 text-center max-w-sm">Masih banyak cerita,
+                    dokumentasi, dan sertifikat lain di balik layar Neni.</p>
+                <div class="flex flex-col gap-5 mt-1">
+                    <a href="https://www.instagram.com/neniekamdn/" target="_blank"
+                        class="ig-follow-btn mt-0 justify-center flex items-center gap-1">
+                        <i class="fab fa-instagram text-lg"></i> Follow di Instagram ↗
+                    </a>
+                    <a href="javascript:void(0)" onclick="openPortfolioModal()"
+                        class="btn-cream-pulse w-fit mx-auto px-6 py-3 rounded-full font-bold text-[11px] md:text-xs tracking-[0.15em] uppercase shadow-lg active:scale-95 flex justify-center items-center transition-all duration-300">
+                        Lihat Portfolio Lengkap →
+                    </a>
+                </div>
+            </div>
         </section>
+
+
 
         <!-- ===================== RECOMMENDATIONS / E-BOOK ===================== -->
         <section id="ebook" class="py-16 md:py-24 relative z-20 section-dark border-t border-burgundy/10 px-5 md:px-12">
@@ -2018,7 +1955,7 @@
                     <div class="w-full md:w-[35%] flex-shrink-0 relative z-10">
                         <div
                             class="relative rounded-xl overflow-hidden shadow-2xl group-hover:scale-105 transition-transform duration-500">
-                            <img src="oversharing.png" alt="Storytelling Beda Dengan Oversharing"
+                            <img src="oversharing.png" alt="Storytelling Beda Dengan Oversharing" loading="lazy"
                                 class="w-full h-full object-cover aspect-square md:aspect-[4/5]">
                             <div class="absolute inset-0 bg-gradient-to-t from-burgundy-dark/80 to-transparent"></div>
                         </div>
@@ -2059,7 +1996,7 @@
                     <div class="w-full md:w-[35%] flex-shrink-0 relative z-10">
                         <div
                             class="relative rounded-xl overflow-hidden shadow-2xl group-hover:scale-105 transition-transform duration-500">
-                            <img src="guidebook.png" alt="Curi Caraku Menulis Storytelling"
+                            <img src="guidebook.png" alt="Curi Caraku Menulis Storytelling" loading="lazy"
                                 class="w-full h-full object-cover aspect-square md:aspect-[4/5]">
                             <div class="absolute inset-0 bg-gradient-to-t from-burgundy-dark/80 to-transparent"></div>
                         </div>
@@ -2213,10 +2150,30 @@
         // ---- SCROLL SECTION OBSERVER ----
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    entry.target.classList.remove('animate-hidden');
+                }
             });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.scroll-section').forEach(el => observer.observe(el));
+        }, { threshold: 0.05, rootMargin: '0px 0px 50px 0px' });
+
+        document.querySelectorAll('.scroll-section').forEach(el => {
+            // Only animate elements not already in viewport on load
+            const rect = el.getBoundingClientRect();
+            if (rect.top > window.innerHeight) {
+                el.classList.add('animate-hidden');
+            }
+            observer.observe(el);
+        });
+
+        // Fallback: force visible only as absolute last resort (15s)
+        setTimeout(() => {
+            document.querySelectorAll('.scroll-section').forEach(el => {
+                el.classList.add('visible');
+                el.classList.remove('animate-hidden');
+            });
+        }, 15000);
+
 
         // ---- STICKY NAV ----
         const stickyNav = document.getElementById('sticky-nav');
